@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='others.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'common.css') }}">
+        <title>BK 日本語</title>
+    </head>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand " href="#">BK</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" style="--h:rgb(73, 49, 98) aria-current="page" href="/begin">首頁</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" style="--h:rgb(73, 49, 98)" aria-current="page" href="/50">五十音</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="--h:rgb(73, 49, 98)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown"  role="button" aria-expanded="false">單字</a>
+                <ul class="dropdown-menu" style="--hm:rgb(68, 34, 123)" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" style="--hh:rgb(102, 51, 183)" href="/N5voc">N5單字</a></li>
+                  <!-- <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf"  href="#">N4單字</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href="#">N3單字</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href="#">N2單字</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href="#">N1單字</a></li> -->
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="--h:rgb(73, 49, 98)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" role="button"  aria-expanded="false">文法</a>
+                <ul class="dropdown-menu" style="--hm:rgb(68, 34, 123)" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" style="--hh:rgb(102, 51, 183)" href="/N5gra">N5文法</a></li>
+                  <!-- <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href="#">N4文法</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href="#">N3文法</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href="#">N2文法</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href="#">N1文法</a></li> -->
+                </ul>
+              </li>
+             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="--h:rgb(73, 49, 98)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" role="button"  aria-expanded="false">
+                  其他工具
+                </a>
+                <ul class="dropdown-menu" style="--hm:rgb(68, 34, 123)" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" style="--hh:rgb(102, 51, 183)" href="/map">地圖</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:rgb(102, 51, 183)" href="/story">小故事</a></li>
+                  {%if mesage=='True'%}
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:rgb(102, 51, 183)" href='/logout'>登出</a></li>
+                  {%else%}
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:rgb(102, 51, 183)" href='/login'>登入/註冊</a></li>
+                  {%endif%}
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+  <body>
+    <div class="load_bg load_bg-other">
+      <div class="loader">
+      </div></div>    
+    <div class="section-img">
+
+        <img src="/static/images/otherfactor/nightcloud.png" id="cloud">
+        <img src="/static/images/otherfactor/nightmount.png" id="mount">
+        <img src='/static/images/otherfactor/nightground.png' id="ground">
+    </div>
+    <div class="section-title">
+      <div data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease" class="content">
+      <h1 class="title read"><p>Read Aloud</p>安裝及使用說明</h1>
+      <div class="card card-story read">
+        <li><a href="#introduce">什麼是Read Aloud</a></li>
+        <li><a href="#install">如何安裝Read Aloud</a></li>
+        <li><a href="#use">如何使用Read Aloud</a></li>
+      </div>
+
+    </div>
+    </div>
+
+    <div class="passline"></div>
+    <div class="section section-story read" >
+        <div class="story" class="text-black">
+             <div id="introduce">
+                <h3>什麼是Read Aloud</h3><br>
+                <p>Read Aloud是一款轉換文字到語音技術應用程序，它將書籍、文章、網頁和文檔轉化成自然流暢的語音，為用戶提供了全新的閱讀體驗。無論是教育、娛樂還是工作，Read Aloud 都可以幫助用戶更輕鬆地獲得所需信息，提高工作和學習的效率。</p>
+
+                    <p>以下是Read Aloud的一些特點：</p>
+                    
+                    <p>1. 多語言支持： Read Aloud 提供多種語言的語音朗讀功能（目前支援超過 40 種以上的語言），使用戶可以選擇他們最舒適的語言來聽取文本內容。這對於學習新語言或在多語言環境中工作的人來說尤其有用。
+                        </p>
+                    <p>2. 自定義聲音和速度： 用戶可以根據自己的喜好選擇不同的聲音和語速。這種個性化設置使每個用戶都能獲得最適合他們的朗讀體驗。
+                        </p>
+                    <p>3. 各種文本來源： Read Aloud 可以處理來自各種來源的文本，包括網頁、電子書、PDF 文件和其他文檔。這意味著用戶可以使用這個應用來朗讀他們感興趣的任何內容。
+                        </p>
+             
+                </div>
+             <hr>
+             <div id="install">
+                <h3>如何安裝Read Aloud</h3><br>
+                <p>請使用Chrome瀏覽器</p>
+                <p>可以直接點選網址進行安裝(<a href="https://chrome.google.com/webstore/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp?utm_source=ext_app_menu"target="_blank">
+                    Read Aloud: 文字語音朗讀助理</a>)</p>
+                    
+             </div>
+             <hr>
+             <div id="use">
+                <h3>如何使用Read Aloud</h3><br>
+                <p>安裝完成後就可以開始使用Read Aloud</p>
+                <p>Step1:
+                開啟所需使用的文本</p>
+                <div class="readimg">
+                <img src="/static/images/otherfactor/readaloudstep1.png" alt=""></div>
+             <br><br>
+             <p>Step2:選取需朗讀文字，按下右鍵點選朗讀所有文字</p>
+             <div class="readimg">
+                <img src="/static/images/otherfactor/readaloudstep2.png" alt=""></div><br><br>
+                <p>以上即可使用，以下為如何調整朗讀語言、音量、聲調、音量</p>
+                <p>Step1:到管理擴充功能頁面</p>
+                <div class="readimg">
+                    <img src="/static/images/otherfactor/readaloudstep3.png" alt=""></div>
+                <br><br>
+                <p>Step2:找到Read Aloud: 文字語音朗讀助理，點選"詳細資料"</p>
+                <div class="readimg">
+                    <img src="/static/images/otherfactor/readaloudstep4.png" alt=""></div>
+                <br><br>
+                <p>Step3:下滑頁面找到"擴充功能選項"</p>
+                <div class="readimg">
+                    <img src="/static/images/otherfactor/readaloudstep5.png" alt=""></div>
+                <br><br>
+                <p>Step5:即可依自身需求進行調整</p>
+                <div class="readimg">
+                    <img src="/static/images/otherfactor/readaloudstep6.png" alt=""></div>
+                <br><br>
+             </div></div>
+           
+        
+    </div></div>
+
+
+
+    <div class="ChatBox">
+      <iframe class="chat-iframe" src="/chatbot"></iframe>
+      <div class="chat-container hide">
+      <div class="chat-floating-button"><i class="fa-regular fa-comments"></i></div>
+      <div class="back-top" title="回頂部"><i class="fa fa-arrow-up"></i></div>
+    </div>
+      </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script type = "text/javascript" src = "{{ url_for('static', filename = 'common.js') }}" ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</html>

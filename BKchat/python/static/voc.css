@@ -1,0 +1,220 @@
+
+
+ .section-img{
+    position: relative;
+    width: 100%;
+    height:100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background: linear-gradient(to bottom,#2f98f5,transparent);
+    background-position: top center;
+}
+img#sun{
+    mix-blend-mode:hard-light;
+}
+.section-img::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top,rgb(165, 233, 245),transparent);
+    z-index: 5;
+}
+.section-img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    
+}
+img#sun{
+   transform: translatey(50px);
+}
+
+
+
+/* ///////////內容//////////////// */
+.section-title::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top,rgb(127, 229, 247),transparent);
+}
+.section-title{
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-color:rgb(165, 233, 245);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    width: 600px;
+    height: auto;
+    padding: 20px;
+}
+.section-title h1{
+ text-align: center;
+  color: rgb(51, 48, 227);
+    font-weight: 800;
+    -webkit-text-decoration-skip: space;
+            text-decoration-skip: space;
+    border-bottom: 4px solid #2e6be7;
+    width: 100%;
+    font-size: 60px;
+}
+.section-title h4{
+  text-align: center;
+  font-weight: 600;
+}
+.section-title .card{
+  height: 200px;
+  border-radius: 10px;
+  margin-top: 50px;
+  background-color: #79c5f13a;
+  justify-content:center;
+  display: flex;
+ padding: 10px;
+flex-direction: row;
+ flex-wrap: wrap;
+
+}
+/* /////////////////////// */
+.btn-voc{
+  padding: 10px;
+  margin: 20px;
+  font-weight: 900;
+    font-size: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.5s, background-color 0.2s, color 0.2s;
+      box-shadow:
+   4px 4px 5px 0px rgba(72, 72, 72, 0.6);
+   
+  
+  transition: all 0.3s ease;
+}
+.btn-voc:hover {
+            background-color: black;
+            color: white;
+            transform: scale(1.2);
+        }
+/* /////////////////////////////*/
+
+
+.section-voc{
+  
+      position: relative;
+        margin: 0;
+        min-height: 100vh;
+        background-color: rgb(127, 229, 247);
+        width: 100%;
+        display: none;
+        padding: 10% 0 10% 0;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       
+        
+}
+
+.imgstyle{
+  
+  margin-top: 10px;
+  padding: 50px;
+  width: 850px;
+    text-align: center;
+    border:5px grey solid;
+    padding:40px;
+    background-color: rgb(248, 237, 235);
+    display:block;
+
+}
+.imgstyle table {
+    border: #000 4px;
+    max-width: 100%;
+    z-index: 999;
+  }
+.imgstyle table th{
+  width: 150px;
+}
+  .passline{
+        width: 100%;
+        height: 5px;
+        background-color: rgba(76, 174, 244, 0.803);
+    }
+
+/* /////////////////////// */
+
+
+@media (max-width:767px) {
+  .content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;   
+  }
+  .title {
+    font-size: 300%!important;
+  }
+  
+  .section-title .card{
+  height: auto;
+  margin-top: 10%;
+  display: flex;
+  justify-content: start;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  }
+  .download {
+    margin-left: 50px;
+    font-size: 100%;
+    margin: 15%;
+  }
+  
+  .btn-voc{
+    margin: 2%;
+    
+  }
+  .btn-voc{ 
+    font-weight: 900;
+      font-size: 20px;
+        width: 40px;
+        height: 40px;
+       
+  }
+  
+  table{width: 100%;}
+  tr{
+    width: 100%;
+    font-size: 80%;
+    vertical-align: middle;
+  }
+  
+  
+  
+  .imgstyle {
+    width: 100%;
+    padding: 2%;
+    
+  }
+  
+  
+}
+

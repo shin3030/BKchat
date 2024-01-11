@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'beginpage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'common.css') }}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>BK 日本語</title>
+</head>
+
+<script>
+ 
+ $(document).ready(function () {
+  let sections = document.querySelectorAll('section');
+  window.addEventListener('scroll', function () {
+    sections.forEach(sec => {
+      let top = window.scrollY;
+      let offset = sec.offsetTop;
+      let height = sec.offsetHeight;
+      let triggerOffset = 40;
+      if (top >= offset-triggerOffset && top < offset + height) {
+        sec.classList.add('show');
+      } else {
+        sec.classList.remove('show');
+      }
+    });
+  });
+  $('.logoback').click(function () {
+    let sec2 = document.querySelector('.sec-2');
+    window.scrollTo({
+      top: sec2.offsetTop+10,
+      behavior: 'smooth'
+    });
+  });
+});
+
+</script>
+
+<body>
+  <div class="container-bubble">
+    <div class="bubbles">
+        <span style="--i:11"></span>
+        <span style="--i:12"></span>
+        <span style="--i:24"></span>
+        <span style="--i:10"></span>
+        <span style="--i:14"></span>
+        <span style="--i:23"></span>
+        <span style="--i:18"></span>
+        <span style="--i:16"></span>
+        <span style="--i:19"></span>
+        <span style="--i:20"></span>
+        <span style="--i:22"></span>
+        <span style="--i:25"></span>
+        <span style="--i:18"></span>
+        <span style="--i:21"></span>
+        <span style="--i:15"></span>
+        <span style="--i:13"></span>
+        <span style="--i:26"></span>
+        <span style="--i:17"></span>
+        <span style="--i:13"></span>
+        <span style="--i:28"></span>
+        <span style="--i:11"></span>
+        <span style="--i:12"></span>
+        <span style="--i:24"></span>
+        <span style="--i:10"></span>
+        <span style="--i:14"></span>
+        <span style="--i:23"></span>
+        <span style="--i:18"></span>
+        <span style="--i:16"></span>
+        <span style="--i:19"></span>
+        <span style="--i:20"></span>
+        <span style="--i:22"></span>
+        <span style="--i:25"></span>
+        <span style="--i:18"></span>
+        <span style="--i:21"></span>
+        <span style="--i:15"></span>
+        <span style="--i:13"></span>
+        <span style="--i:26"></span>
+        <span style="--i:17"></span>
+        <span style="--i:13"></span>
+        <span style="--i:28"></span>
+        <span style="--i:11"></span>
+        <span style="--i:12"></span>
+        <span style="--i:24"></span>
+        <span style="--i:10"></span>
+        <span style="--i:14"></span>
+        <span style="--i:23"></span>
+        <span style="--i:18"></span>
+        <span style="--i:16"></span>
+        <span style="--i:19"></span>
+        <span style="--i:20"></span>
+        <span style="--i:22"></span>
+        
+    </div>
+</div>
+<div class="load_bg">
+  <div class="loader">
+  </div></div>
+       <!--內容-->
+      
+       <section class="sec-1 show">
+        
+        <div class="beginpage">
+          <div class="logo-card">
+          <div class="bounce-text">
+            <h1>
+                <span>B</span>
+                <span>K</span>
+                <span>日</span>
+                <span>本</span>
+                <span>語</span>
+                
+          </h1></div>
+          <span class="logoback"><img class="logo" alt="" src="/static/images/otherfactor/yuko_title.png"></span>
+          {%if mesage!='True'%}
+          <a class="login" href="/login">登入/註冊</a>
+          
+          {%else%}
+          <a class="login" href="/logout">登出</a>
+          {%endif%}
+        </div>
+          
+          
+        </div>
+        
+        </section>
+        
+        <section class="sec-2">
+          <div class="sec-transpant" style="--secimg:rgba(245, 222, 179, 0.351)">
+            <div class="menu-card">
+          <div class="card" style="--c:0;
+          --a:rgba(48, 63, 98, 0.24);
+          --b:rgba(241, 192, 157, 0.29);
+          --abor:rgba(95, 63, 225, 0.548);
+          --bbor:rgba(157, 163, 42, 0.681)"> 
+            <img alt="" src="/static/images/cherryblossom/sakura.jpg">
+            <div class="card-content">
+                <h2 id="letter">五十音</h2>  
+           <hr>
+           <a class="custom-btn btn-8" href="/50" style="
+           --btnback: linear-gradient(315deg, rgba(48, 63, 98, 0.396) 0%, rgba(241, 192, 157, 0.692) 74%);
+           --btnhborder:#626262;
+           --btnhcolor:rgb(29, 14, 95)"><span>五十音</span></a>
+                
+            </div>  
+        </div>
+          
+          <div class="card" style="--c:1;
+          --a:rgba(150, 176, 238, 0.24);
+          --b:#89c3f739;
+          --abor:rgba(111, 96, 170, 0.548);
+          --bbor:rgba(111, 96, 170, 0.681)"> 
+            <img alt="" src="/static/images/cherryblossom/sunrise_cherry_blossom.jpg">
+            <div class="card-content vocabulary" >
+                <h2>單字</h2>
+                <hr>
+                <a class="custom-btn btn-8" href="/N5voc" style="
+                --btnback: linear-gradient(315deg,#88c3f7  0%,rgb(136, 170, 251)  74%);
+                --btnhborder:#4e90b4;
+                --btnhcolor:#2576e0"><span>N5</span></a>
+
+                <!-- <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,#88c3f7  0%,rgb(136, 170, 251)  74%);
+                --btnhborder:#4e90b4;
+                --btnhcolor:#2576e0"><span>N4</span></a>
+
+                <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,#88c3f7  0%,rgb(136, 170, 251)  74%);
+                --btnhborder:#4e90b4;
+                --btnhcolor:#2576e0"><span>N3</span></a>
+
+                <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,#88c3f7  0%,rgb(136, 170, 251)  74%);
+                --btnhborder:#4e90b4;
+                --btnhcolor:#2576e0"><span>N2</span></a>
+
+                <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,#88c3f7  0%,rgb(136, 170, 251)  74%);
+                --btnhborder:#4e90b4;
+                --btnhcolor:#2576e0"><span>N1</span></a> -->
+            </div>  
+        </div>
+          
+          <div class="card  grammar" style="--c:2;
+          --a:rgba(119, 79, 37, 0.24);
+          --b:rgba(241, 192, 157, 0.29);
+          --abor:rgba(44, 112, 176, 0.548);
+          --bbor:rgba(157, 163, 42, 0.681)"> 
+            <img alt="" src="/static/images/cherryblossom/sunset_cherry_blossom.jpg">
+            <div class="card-content" >
+                <h2>文法</h2>
+                
+                <hr>
+                <a class="custom-btn btn-8" href="/N5gra" style="
+                --btnback: linear-gradient(315deg,rgba(153, 103, 48, 0.771)0%,rgb(243, 170, 118)   74%);
+                --btnhborder:#ffd864fc;
+                --btnhcolor:#53463f"><span>N5</span></a>
+
+                <!-- <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,rgba(153, 103, 48, 0.771)0%,rgb(243, 170, 118)   74%);
+                --btnhborder:#ffd864fc;
+                --btnhcolor:#53463f"><span>N4</span></a>
+
+                <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,rgba(153, 103, 48, 0.771)0%,rgb(243, 170, 118)   74%);
+                --btnhborder:#ffd864fc;
+                --btnhcolor:#53463f"><span>N3</span></a>
+
+                <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,rgba(153, 103, 48, 0.771)0%,rgb(243, 170, 118)   74%);
+                --btnhborder:#ffd864fc;
+                --btnhcolor:#53463f"><span>N2</span></a>
+
+                <a class="custom-btn btn-8" href="#" style="
+                --btnback: linear-gradient(315deg,rgba(153, 103, 48, 0.771)0%,rgb(243, 170, 118)   74%);
+                --btnhborder:#ffd864fc;
+                --btnhcolor:#53463f"><span>N1</span></a> -->
+            </div>  
+        </div>
+        <div class="card" style="--c:3;
+        --a:rgba(89, 59, 122, 0.24);
+        --b:rgba(93, 26, 131, 0.29);
+        --abor:rgba(73, 47, 176, 0.653);
+        --bbor:rgba(73, 47, 176, 0.653)"> 
+          <img alt="" src="/static/images/cherryblossom/night_cherry_blossom.jpg">
+            <div class="card-content others" >
+                <h2 class="begin-story">小故事&地圖</h2>
+                
+                <hr>
+                <a class="custom-btn btn-8" href="/story" style="
+                --btnback: linear-gradient(315deg,rgb(98, 32, 169)0%,rgb(180, 116, 218)   74%);
+                --btnhborder:#d364fffc;
+                --btnhcolor:#f585ff"><span>小故事</span></a>
+                <a class="custom-btn btn-8" href="/map" style="
+                --btnback: linear-gradient(315deg,rgb(98, 32, 169)0%,rgb(180, 116, 218)   74%);
+                --btnhborder:#d364fffc;
+                --btnhcolor:#f585ff"><span>地圖</span></a>
+            </div>  </div>
+        </div></div>
+        <!-- <div class="backimgsec p0"></div> -->
+        </section>
+        <section class="sec-3">
+            <div  class="sec-transpant sec-3card" style="--secimg:rgba(255, 255, 255, 0.49)">
+            <div class="inner-card">
+              <h1>網頁特色</h1>
+              <div class="row">
+                <div class="col col-md-4">
+                  <img src="/static/images/otherfactor/book_feature.png" alt="">
+                  <h3>教材提供</h3>
+                  <p>五十音表、單字表、文法<br>
+                  線上教材隨時可以學習<br>
+                提供教材下載，助於離線學習</p>
+                </div>
+                <div class="col col-md-4">
+                  <img src="/static/images/otherfactor/story_feature.png" alt="">
+                  <h3>短篇閱讀</h3>
+                  <p>短篇小故事提升日文閱讀能力<br>
+                  提供中文翻譯，協助閱讀學習<br>
+                提供全日版本，可搭配朗讀工具使用</p>
+                </div>
+                <div class="col col-md-4">
+                  <img src="/static/images/otherfactor/map_feature.png" alt="">
+                  <h3>日本地圖</h3>
+                  <p>協助學習日本行政區劃分<br>
+                    及各區觀光景點分布、介紹<br>
+                    等地理位置資訊</p>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="backimgsec p1"></div>
+        </section>
+        <section class="sec-4">
+          <div  class="sec-transpant" style="--secimg:#ae80ea89">
+          <div class="inner-card"><h2 class="about-title">關於網站</h2>
+          <div class="inner-card-content">
+            <div class="image"><img src="/static/images/landscape/貴船神社.jpg"></div>
+            <div class="text-box" >
+              <h3>關於BK</h3>
+              <div class="text-box-content">
+              <p>「<ruby>勉強<rp>(</rp><rt>べんきょう</rt><rp>)</rp> </ruby>」這個詞彙的音譯為(benkyou)，而我們取了這兩個字的第一個音節，即「B」和「K」。這兩個音節代表著努力學習和不懈的奮鬥，象徵著學習者在學習日本語的過程中所付出的努力和決心。
+
+                <br>我們希望BK日本語能夠成為一個讓學習者全情投入、不斷進步的學習平台，正如我們的名稱所表達的那樣，無論您是初學者還是有一定日語基礎的人，都可以在這裡找到適合自己的學習資源，實現更高水平的日語能力。
+                
+                </p></div>
+            </div>
+          </div></div>
+        </div>
+          <div class="backimgsec p2"></div>
+      </section>
+  <section class="sec-5 sec-4">
+    <div class="sec-transpant" style="--secimg:rgba(112, 75, 27, 0.341)">
+      <div class="inner-card">
+        <h3 class="about-title">聯絡我們</h3>
+        <div class="inner-card-content">
+          <div class="media-info">
+            <li><a href="#" target="_blank"><i class="fa-brands fa-facebook-messenger"></i>Messenger</a></li>
+            <li><a href="https://www.instagram.com/bknihongo/" target="_blank"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+            <li><a href="https://github.com/shin3030" target="_blank"><i class="fa-brands fa-github"></i>Github</a></li>
+            <li><a href="https://line.me/ti/p/_uWRMfOKAT" target="_blank"><i class="fa-brands fa-line"></i>Line</a></li>
+            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=409630174@gms.tku.edu.tw" target="_blank"><i class="fa-regular fa-envelope"></i>Mail</a></li>
+          </div>
+          <div class="image"><img src="/static/images/landscape/清水寺.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="backimgsec p3"></div>
+  </section>
+    </body>
+</html>

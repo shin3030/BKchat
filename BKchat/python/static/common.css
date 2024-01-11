@@ -1,0 +1,354 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+@import url(https://unpkg.com/aos@2.3.1/dist/aos.css);
+body{
+  margin: 0;
+  padding: 0;
+}
+.download{
+  color: #2f98f5;
+}
+@media screen and (max-width: 1400px){
+  .yuko{
+    display: none;
+  }
+  .card .card-content h2{
+    font-size: 40px;
+  }
+  .card .card-content .begin-story{
+    font-size: 32px;
+  }
+
+}
+
+
+
+  /* /////////導航欄/////////// */
+  header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px,0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.navbar .navbar-nav .nav-link {
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+padding: 0.6em;
+font-size: 1.2em;
+transition: all 0.5s;
+border-radius: 30px;
+}
+.navbar .navbar-brand {
+    color: white;
+padding: 0 0.6em;
+font-size: 1.8em;
+font-weight: bold;
+}
+.navbar .navbar-nav .nav-link:hover {
+    background:var(--h);
+    color: #fbfbfb;
+    } 
+.dropdown:hover .dropdown-menu{
+    display: block;
+    background: var(--hm);
+}
+.dropdown-item:hover{
+  background:var(--hh);
+}
+.others-menu .dropdown .dropdown-item{
+  color: wheat;
+}
+/* /////////////////////// */
+
+/* ////////// */
+.yuko {
+  position: fixed;
+  bottom: 10%;
+  left: 1%;
+  width: 350px;
+  height: 350px;
+  background:  center/95% url("/static/images/otherfactor/yuko.png") no-repeat ;
+  z-index: 1;
+  opacity: 1;
+  transition: all 0.2s linear;
+  
+}
+.yuko:hover {
+  background: center/95% url("/static/images/otherfactor/yuko_2.png") no-repeat;
+}
+.yuko.hideimg{
+  opacity: 0;
+}
+/* //////////// */
+
+/*////////////////////// 加載動畫 /////////////////*/
+.load_bg{
+  position:fixed;
+  z-index: 999999;
+  background:linear-gradient(to bottom,rgb(238, 148, 163),rgb(151, 73, 179)) ;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  -webkit-animation: loading 1.25s ease;
+          animation: loading 1.25s ease;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode:forwards;
+          animation-fill-mode:forwards;
+}
+.load_bg-50{
+  background:linear-gradient(to bottom,rgb(48,63,98),rgb(225,197,177));
+}
+.load_bg-voc{
+  background:linear-gradient(to bottom,#2f98f5,rgb(127, 229, 247));
+}
+.load_bg-sec{
+  background:linear-gradient(to bottom,rgb(103,12,60),rgb(250,168,24));
+}
+.load_bg-other{
+  background:linear-gradient(to bottom,rgb(41,2,52),rgb(21,25,42));
+}
+@-webkit-keyframes loading {
+  0%{opacity: 1;}
+  50%{opacity: 1;}
+  75%{opacity: 1;}  
+  100%{
+    opacity: 0;
+    display:none;
+  }
+  
+}
+@keyframes loading {
+  0%{opacity: 1;}
+  50%{opacity: 1;}
+  75%{opacity: 1;}  
+  100%{
+    opacity: 0;
+    display:none;
+  }
+  
+}
+  .loader{
+      height: 5em;
+      width: 5em;
+      border: 0.3em solid rgb(255, 255, 255);
+      position: absolute;
+      margin: auto;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      -webkit-animation: spin1 3s infinite linear;
+              animation: spin1 3s infinite linear;
+  }
+  @-webkit-keyframes spin1 {
+      100%{
+          transform: rotate(360deg);
+      }
+  }
+  @keyframes spin1 {
+      100%{
+          transform: rotate(360deg);
+      }
+  }
+  .loader::before,.loader::after{
+      position: absolute;
+      content: '';
+      height: 5em;
+      width: 5em;
+      border: 0.3em solid rgb(255, 255, 255);
+      top: -0.3em;
+      left: -0.3em;
+  }
+  .loader::before{
+      transform: rotate(30deg);
+      -webkit-animation: spin2 3s infinite linear;
+              animation: spin2 3s infinite linear;
+  }
+  
+  .loader::after{
+      transform: rotate(60deg);
+      -webkit-animation: spin3 3s infinite linear;
+              animation: spin3 3s infinite linear;
+  }
+  /* //////////////////////////////////////////// */
+
+/* ////////頂部按鈕///////// */
+
+.ChatBox{
+  z-index: 1001;
+  position: fixed;
+  display: flex;
+  width: 500px;
+  flex-direction: row;
+  justify-content:end;
+  align-items: end;
+  padding: 5px;
+  right: 1%;
+  bottom: 0;
+  
+}
+
+.back-top {
+    position:relative;
+    cursor: pointer;
+    opacity: 0.5;
+    filter: Alpha(opacity=50);
+    width: 60px;
+    height: 60px;
+    background-size: 50px 50px;
+    border-radius: 15px;
+    border: 1px rgba(255, 255, 255, 0.6) solid;
+    box-shadow: 0px 0px 3px #ffffff;
+    line-height: 4.8rem;
+    margin:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    }
+    .back-top i {
+      font-size: 36px;
+      color: #fff; 
+  }
+  
+  .back-top:hover {
+    opacity: 0.8;
+    filter: Alpha(opacity=80);
+    box-shadow: 0px 0px 6px #ffffff;
+  }
+  
+  
+  /* //////////////////// */
+  .chat-container.hide {
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    transform: translateY(150%);
+  }
+        .chat-container {
+          transform: translateY(0%);
+          transition: all 0.5s linear;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
+        }
+
+        .chat-floating-button {
+          z-index: 5;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background:transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 3px rgba(83, 157, 235, 0.6) solid;
+            box-shadow: 0px 0px 5px #5d7bf1;
+            margin: 5px;
+            transition: .5s;
+            opacity: 1;
+        }
+        
+        .chat-iframe {
+          z-index: 999;
+            width: 380px;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            display: none;
+        }
+        .chat-iframe.showchat{
+            display: block;
+            clip-path:circle(100%);
+            opacity: 1;
+        }
+        .chat-floating-button i{
+          color: #5392fe; 
+          font-size: 36px;
+        }
+        .chat-floating-button:hover{
+          opacity: 0.7;
+          filter: Alpha(opacity=80);
+    box-shadow: 0px 0px 6px #1d74a7;
+    transform: scale(1.1);
+        }
+        .chat-floating-button.active{
+            transform:scale(-0.8) rotate(45deg);
+        }
+        .chat-floating-button.active::after{
+            content: '+';
+            font-size: 50px;
+            color: rgb(46, 131, 236);
+            text-align: center;
+            justify-content: center;
+            line-height: 45px;
+            height: 50px;
+            width: 50px;
+        }
+        .chat-floating-button.active i{
+            opacity: 0;
+            transition: .7s;
+            display: none;
+        }
+
+
+@media (max-width: 767px){
+        .section-img img{                            
+            display: none !important;
+        }
+        nav{                                           
+          width:100%
+          }
+        .navbar-toggler:focus {                       
+          outline: none;
+          box-shadow: none;
+        }
+        
+        
+        .back-top {                                   /*返回按鈕*/
+          bottom: 1%;
+          right: 1%;
+          width: 40px !important;
+          height: 40px !important;
+          background-size: 50px 50px;
+          border: 3px  #049a95 solid !important;
+          box-shadow: 0px 0px 3px   #049a95 !important;
+          transform: translateY(0%);
+          }
+          .back-top i {
+            font-size: 20px;
+            color:  #049a95; 
+        }
+        .chat-floating-button{
+          height: 50px;
+          width: 50px;
+        }
+        .chat-floating-button i{
+          font-size: 24px;
+        }
+        .ChatBox{
+          width: 100%;
+          display: flex;
+          flex-direction: column-reverse;
+        }
+        .chat-container{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .chat-iframe{
+          width: 100%;
+          height: 40vh;
+        }
+        }

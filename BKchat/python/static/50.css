@@ -1,0 +1,154 @@
+
+ .section{
+        position: relative;
+        margin: 0;
+        min-height: 100vh;
+        background-color: rgb(32, 115, 157);
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+.section-img{
+    position: relative;
+    width: 100%;
+    height:100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background:linear-gradient(to bottom,rgb(48,63,98),rgb(225,197,177));
+    background-position: top center;
+}
+.section-img::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top,rgb(32, 115, 157),transparent);
+    z-index: 33;
+}
+.section-img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    
+}
+/* ///////////////////////////// */
+.content{
+      width: 600px;
+      height: auto;
+      padding: 20px;
+  }
+  .section-title h1{
+   text-align: center;
+    color: rgb(17, 2, 185);
+      font-weight: 800;
+      -webkit-text-decoration-skip: space;
+              text-decoration-skip: space;
+      border-bottom: 4px solid rgb(17, 2, 185);
+      width: 100%;
+      font-size: 60px;
+      
+
+  }
+  .section-title .card{
+    font-size: 25px;
+    font-weight: 800;
+    border-radius: 10px;
+    margin-top: 50px;
+    background-color: #0674cf72;
+    color: #cccbcb;
+    justify-content:center;
+    align-items: start;
+   padding: 10px;
+   box-shadow: 2px 4px 10px rgba(0, 58, 133, 0.674);
+  }
+
+.back-card{  
+    position: relative;
+margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(73, 165, 231, 0.673);
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    width:fit-content;
+    height: auto;
+    border-radius: 5px;
+}
+
+.back-card img{
+    padding: 10px;
+}
+.card-content{
+    position: relative;
+    width: 500px;
+    background-color: rgba(138, 195, 236, 0.44);
+    width: 30%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 2px 4px 10px rgba(62, 138, 238, 0.674);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-content h1{
+    padding: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 50px;   
+}
+.card-content p{
+    padding: 10px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.passline{
+    width: 100%;
+    height: 5px;
+    background-color: rgb(6, 95, 159);
+}
+
+@media (max-width: 767px){
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;   
+}
+.title {                              /*大標題*/
+    font-size: 300%!important;
+}
+.card p {                             /*內容*/
+    font-weight: bold;
+     font-size: 80% !important;
+      margin-top: 0px; 
+      margin-bottom: 0px; 
+ }
+.download {
+    font-size: 100%;
+}
+.card-content{                       /*圖片標題框*/
+    width: 60%;
+  } 
+.card-content h1{                    /*圖片標題大小*/
+    font-size: 150% !important;   
+}
+
+.back-card img {  
+    width: 100%; 
+    height: auto; 
+}
+
+}

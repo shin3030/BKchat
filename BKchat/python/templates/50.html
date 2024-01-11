@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename = '50.css') }}">
+
+        <title>BK 日本語</title>
+    </head>
+<style>
+ 
+</style>
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand " href="#">BK</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" style="--h:rgb(76, 99, 154)" aria-current="page" href="/begin">首頁</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="--h:rgb(76, 99, 154)" aria-current="page" href="/50">五十音</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" style="--h:rgb(76, 99, 154)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown"  role="button" aria-expanded="false">單字</a>
+            <ul class="dropdown-menu" style="--hm:rgb(91, 118, 182)" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" style="--hh:#3f8adf" href="/N5voc">N5單字</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" style="--h:rgb(76, 99, 154)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" role="button"  aria-expanded="false">文法</a>
+            <ul class="dropdown-menu" style="--hm:rgb(91, 118, 182)" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" style="--hh:#3f8adf" href="/N5gra">N5文法</a></li>
+              
+            </ul>
+          </li>
+         
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" style="--h:rgb(76, 99, 154)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" role="button"  aria-expanded="false">
+              其他工具
+            </a>
+            <ul class="dropdown-menu" style="--hm:rgb(91, 118, 182)" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" style="--hh:#3f8adf" href="/map">地圖</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" style="--hh:#3f8adf" href="/story">小故事</a></li>
+              {%if mesage=='True'%}
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href='/logout'>登出</a></li>
+              {%else%}
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" style="--hh:#3f8adf" href='/login'>登入/註冊</a></li>
+              {%endif%}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<body>
+  <div class="load_bg load_bg-50">
+    <div class="loader">
+    </div></div>
+    <div class="section-img">
+
+        <img src="/static/images/otherfactor/sunrisecloud.png" id="sunrisecloud">
+        <img src="/static/images/otherfactor/sunrise.png" id="sunrise">
+        <img src="/static/images/otherfactor/sunrisemount.png" id="mount">
+        <img src='/static/images/otherfactor/sunriseground.png' id="ground">
+    </div>
+ <div class="section section-title">
+  <div data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease" class="content">
+    <h1 class="title">五十音</h1>
+    <div class="card">
+      <p>「五十音」就是組成日語的文字，分為平假名和片假名兩種字母系統，各有母音五個字，子音十個字，交叉而成五十音。又分為清音、濁音、半濁音、拗音、長音、促音。</p>
+    </div><a class="download" href="https://drive.google.com/drive/folders/1yW9FZzcz-sutpgN9mChQf59fT1TGzeFo?usp=drive_link"target="_blank">教材下載</a></div>
+   
+ </div>
+ <div class="passline"></div>
+ <div class="section section-50">
+  <div data-aos="zoom-in-down"data-aos-duration="800"
+  data-aos-easing="ease-in-sine" class="card-content card-content-50">
+      <h1>五十音表</h1>
+    </div> 
+  <div data-aos="fade-up" data-aos-duration="800" class="back-card card-50">
+  <img src="/static/images/50/50.png" width="700px">                        
+  </div>
+</div>
+
+ <div class="passline"></div>
+
+<div class="section section-ga">
+    <div data-aos="zoom-in-down"data-aos-duration="800"
+    data-aos-easing="ease-in-sine" class="card-content card-content-ga">
+        <h1>濁音/半濁音</h1>
+       </div>
+    <div data-aos="fade-up" data-aos-duration="800"class="back-card card-ga">
+        <img src="/static/images/50/ga.png" width="800px">                        
+        </div>
+</div>
+<div class="passline"></div>
+<div class="section section-ya">
+    <div data-aos="zoom-in-down"data-aos-duration="800"
+    data-aos-easing="ease-in-sine" class="card-content card-content-ya">
+        <h1>拗音</h1>
+       </div>
+    <div data-aos="fade-up" data-aos-duration="800" class="back-card card-ya">
+        <img src="/static/images/50/ya.png" width="800px" >                        
+        </div>
+</div>
+
+<div class="ChatBox">
+  <iframe class="chat-iframe" src="/chatbot"></iframe>
+  <div class="chat-container hide">
+  <div class="chat-floating-button"><i class="fa-regular fa-comments"></i></div>
+  <div class="back-top" title="回頂部"><i class="fa fa-arrow-up"></i></div>
+</div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script type = "text/javascript" src = "{{ url_for('static', filename = 'common.js') }}" ></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+</html>

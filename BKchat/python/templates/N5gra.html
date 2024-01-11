@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='common.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'grammer.css') }}">
+    
+    <title>BK 日本語</title>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand " href="#">BK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" style="--h:rgb(161, 20, 95)" aria-current="page" href="/begin">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="--h:rgb(161, 20, 95)" aria-current="page" href="/50">五十音</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" style="--h:rgb(161, 20, 95)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown"  role="button" aria-expanded="false">單字</a>
+              <ul class="dropdown-menu" style="--hm:rgb(194, 107, 1)" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" style="--hh:rgb(186, 65, 0)" href="/N5voc">N5單字</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" style="--h:rgb(161, 20, 95)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" role="button"  aria-expanded="false">文法</a>
+              <ul class="dropdown-menu" style="--hm:rgb(194, 107, 1)" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" style="--hh:rgb(186, 65, 0)" href="/N5gra">N5文法</a></li>
+                
+              </ul>
+            </li>
+           
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" style="--h:rgb(161, 20, 95)" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" role="button"  aria-expanded="false">
+                其他工具
+              </a>
+              <ul class="dropdown-menu" style="--hm:rgb(194, 107, 1)" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" style="--hh:rgb(186, 65, 0)" href="/map">地圖</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" style="--hh:rgb(186, 65, 0)" href="/story">小故事</a></li>
+                {%if mesage=='True'%}
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" style="--hh:rgb(186, 65, 0)" href='/logout'>登出</a></li>
+                {%else%}
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" style="--hh:rgb(186, 65, 0)" href='/login'>登入/註冊</a></li>
+                {%endif%}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<body>
+    <div class="load_bg load_bg-sec">
+        <div class="loader">
+        </div></div>
+    <div class="section-img">
+
+        <img src="/static/images/otherfactor/sunsetcloud.png" id="sunsetcloud">
+        <img src="/static/images/otherfactor/sunset.png" id="sunset">
+        <img src="/static/images/otherfactor/sunsetmount.png" id="mount">
+        <img src='/static/images/otherfactor/sunsetground.png' id="ground">
+    </div>
+    <div class="section-title">
+      <div data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-out" class="content">
+      <h1 class="title">N5文法</h1>
+      <div data-aos="flip-left" data-aos-duration="1200" data-aos-easing="ease-in-out" class="card">
+        <button class="btn-course custom-btn" onclick="showCourse(1)">第一课</button>
+        <button class="btn-course custom-btn" onclick="showCourse(2)">第二课</button>
+        <button class="btn-course custom-btn" onclick="showCourse(3)">第三课</button>
+        <button class="btn-course custom-btn" onclick="showCourse(4)">第四课</button>
+        <button class="btn-course custom-btn" onclick="showCourse(5)">第五课</button>
+        <button class="btn-course custom-btn" onclick="showCourse(6)">第六课</button>
+        <button class="btn-course custom-btn" onclick="showCourse(7)">第七课</button>
+      </div><a class="download" href="https://drive.google.com/drive/folders/1yW9FZzcz-sutpgN9mChQf59fT1TGzeFo?usp=drive_link"target="_blank">教材下載</a></div>
+    </div>
+    
+    <div class="passline"></div>
+    <div class="yuko hideimg"></div>
+    <!-- <div class="row">
+        <h5 class="col-md-10 col-10"></h5>
+        <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex()">例句</a>
+    </div> -->
+    <div class="section course course1">
+        <div class="style2 col-md-6 py-5 text-black">
+          <h2>第一課</h2>
+          <hr>
+            <div class="row">
+                <h5 class="col-md-10 col-10">A は B です (A是B)</h5>
+                <a class="col-md-2 col-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(1)">例句</a>
+            </div>
+                <p>は：助詞，讀音為 wa</p>
+                <p>です：表肯定</p>
+                <hr>
+                <div class="row">
+                    <h5 class="col-md-10 col-10">A は B ではありません (A不是B)</h5>
+                    <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(2)">例句</a>
+                </div>
+                
+                <p>ではありません：表否定</p>
+                <p>ではありません ＝ じゃありません＝ではないです</p>
+                <p>では＝じゃ</p>
+                <p>ありません＝ない</p>
+                <hr>
+                <div class="row">
+                    <h5 class="col-md-10 col-10">A は B ですか？ (A是B嗎?)</h5>
+                    <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(3)">例句</a>
+                </div>
+                <p>か：疑問助詞</p>
+                <li>Yes --> はい、A は B です</li>
+                <li>No --> いいえ、A は B ではありません</li>
+                <p><mark>*這裡的 A,B 皆放入名詞</mark></p>
+                <h5>敬體與常體之間肯定與否定的差異</h5>
+                
+               <table border="1" class="table-bordered" bordercolor="black">
+                <tr>
+                  <th></th>
+                  <th>敬體</th>
+                  <th>常體</th>
+                </tr>
+              <tbody>
+                <tr>
+                  <th>肯定</th>
+                  <td>はい、A は B です。</td>
+                  <td>はい、A は B だ。</td>
+                </tr>
+                <tr>
+                  <th rowspan="2">否定</th>
+                  <td>いいえ、A は B ではありません。</td>
+                  <td rowspan="2">いいえ、A は B ではない。</td>
+                </tr>
+                <tr>
+                  <td>いいえ、A は B ではないです。</td>
+                </tr>
+                <tr>
+                  <th>否定(較口語)</th>
+                  <td>いいえ、A は B じゃありません。</td>
+                  <td>いいえ、A は B じゃない。</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <hr>
+
+            
+                <h5 class="col-md-10 col-10">指示詞</h5>
+                
+            
+            <p>在此假設自己為說話者，另一個人為聽話者，在有點距離的情況下。</p>
+            
+            <table border="1" class="table-bordered" bordercolor="black">
+                <thead>
+                  <tr>
+                    <th>用法</th>
+                    <th>意思</th>
+                    <th>距離</th>
+                    <th>解釋</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>これ　この　ここ</th>
+                    <td>這</td>
+                    <td>近距離</td>
+                    <td>離自己較近的事物或場所</td>
+                  </tr>
+                  <tr>
+                    <th>それ　その　そこ</th>
+                    <td>那</td>
+                    <td>中距離</td>
+                    <td>離對方較近的事物或場所</td>
+                  </tr>
+                  <tr>
+                    <th>あれ　あの　あそこ</th>
+                    <td>那</td>
+                    <td>遠距離</td>
+                    <td>離雙方都很遠的事物或場所</td>
+                  </tr>
+                  <tr>
+                    <th>どれ　どの　どこ</th>
+                    <td>哪一個</td>
+                    <td>距離不確定</td>
+                    <td>指三件以上人事物之其中一個</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            
+              <br>
+                <div class="row d-flex justify-content-start align-middle "><li class="col-md-10 col-12">これ／それ／あれ　＋　は　＋　N　＋です</li>
+                    <a class="col-md-1 btn btn-outline-secondary p-0" style="font-size: 15px;" onclick="getSearchIndex(4)">例句</a></div>
+                <div class="row d-flex justify-content-start align-middle "><li class="col-md-10">これ／それ／あれ　＋　は　＋     S　＋　の　＋　N　＋　です</li>
+                    <a class="col-md-1 btn btn-outline-secondary p-0" style="font-size: 15px;" onclick="getSearchIndex(5)">例句</a></div>
+                <div class="row d-flex justify-content-start align-middle "><li class="col-md-10">この／その／あの　＋　N１(物）＋　は　＋　 S　＋　の　＋（N1）＋　です</li>
+                    <a class="col-md-1 btn btn-outline-secondary p-0" style="font-size: 15px;" onclick="getSearchIndex(6)">例句</a></div>
+                <div class="row d-flex justify-content-start align-middle "><li class="col-md-10">N　＋　は　＋　どれ　＋　ですか</li>
+                    <a class="col-md-1 btn btn-outline-secondary p-0" style="font-size: 15px;" onclick="getSearchIndex(7)">例句</a></div>
+                <div class="row d-flex justify-content-start align-middle "><li class="col-md-10">N　＋　は　＋　どの　＋　N　＋　ですか</li>
+                    <a class="col-md-1 btn btn-outline-secondary p-0" style="font-size: 15px;" onclick="getSearchIndex(8)">例句</a></div>
+                <p>例：図書館はどの建物ですか。</p>
+            
+                <p>★</p>
+            
+                <p>どれ問　→　これ／それ／あれ答</p>
+                <p>どの問　→　この／その／あの答</p>
+                <p>依照距離提問語回答</p>
+                <li>物品物品兩人皆靠近：問：これ／この　→　答：これ／この</li>
+                <li>物品離A有段距離，離B比較近：<br> A問：それ／その　B答：これ／この</li>
+                <li>物品離兩人都遠：問：あれ／あの　→　答：あれ／あの</li>
+                <p>依照距離提問語回答</p>
+                <li>自己&對方所在的場所：問：ここ　→　答：ここ</li>
+                <li>離A有點距離的場所，離B較近：<br> A問：そこ　B答：ここ</li>
+                <li>離自己&對方都遠的場所：問：あそこ　→　答：あそこ</li>
+            
+            <hr>
+            <div class="row">
+                <h5 class="col-md-10 col-10">助詞の</h5>
+                <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(9)">例句</a>
+            </div>
+                <h5>N1 の N2 (某人的東西)</h5>
+                <p>N1為人，N2 為事物</p>
+            <hr>
+
+            <div class="row">
+                <h5 class="col-md-10 col-10">助詞も</h5>
+                <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(10)">例句</a>
+            </div>
+                <h5>N1 も N2 です(某人也是...)</h5>
+                <p>表示並例，中文"也"的意思。</p>
+            
+            </div>
+    
+   
+    </div>
+    <div class="section course course2">
+      <div class="style2"class="col-md-6 py-5 text-black">
+        
+        <h2>第二課</h2>
+        <hr>
+        <div class="row">
+            <h5 class="col-md-10 col-10">い形容詞</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(11)">(い)例句</a>
+        </div>
+        <p>い形容詞 + 名詞</p>
+        <p>形容詞以い結尾</p>
+        <div class="row">
+            <h5 class="col-md-10 col-10">な形容詞</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(12)">(な)例句</a>
+        <p>形容動詞 + な + 名詞</p>
+        <p>例：綺麗な部屋、嫌いな野菜</p>
+        <p>*綺麗（きれい）、嫌い（きらい）這兩字雖然是い結尾，但卻是<mark>な形容詞</mark></p>
+        <h5>S （主語） は ＋い形容詞＋N（名詞）＋です</h5>
+        <h5>S（主詞）は＋な形容詞＋な＋N（名詞）＋です</h5>
+        <h5>S（主語） は A ですか、 Bですか</h5>
+        <p><mark>*A, B皆放入形容詞</mark></p>
+        <hr>
+        <h3>有無句</h3>
+        <div class="row">
+            <h5 class="col-md-10 col-10">A に B があります / います（A有B）</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(13)">例句</a>
+        </div>
+        <p>A放場所、位置</p>
+        <p>B放存在的東西或人...</p>
+        <p><mark>B是有生命（會動）的話使用います</mark></p>
+        <p><mark>B是無生命（無法自行移動）的話使用あります</mark></p>
+        <br>
+        <p>に：助詞，表場所、地點</p>
+        <p>が：助詞，表有無</p>
+        <div class="row">
+            <h5 class="col-md-10 col-10">A に B があります / いますか？（A有B嗎？）</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(14)">例句</a>
+        </div>
+        <p>A放場所、位置</p>
+        <p>B放入疑問詞</p>
+        <li>需注意B放入的為無生命或是有生命的人或是動物...<br>要跟後方的あります、います做搭配</li>
+        <p>例：だれがいますか、なにがありますか、なにがいますか</p>
+    
+        <h5>あります / います的肯定否定</h5>
+    <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <thead>
+              <tr>
+                <th>肯定</th>
+                <th>否定</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>います</td>
+                <td>いません</td>
+              </tr>
+              <tr>
+                <td>あります</td>
+                <td>ありません</td>
+              </tr>
+            </tbody>
+        </table>
+        <br>
+              <li>Yes--->はい、B（名詞）があります／います。</li>
+              <li>No--->いいえ、B（名詞）<mark>は</mark>ありません／いません。</li>
+            <hr>
+            <h3>存在句</h3>
+            <div class="row">
+                <h5 class="col-md-10 col-10">A には B もありません / いません  (A不在B)</h5>
+                <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(16)">例句</a>
+            </div>
+              <p>A放場所、位置</p>
+              <p>B放入疑問詞</p>
+              <li>需注意B放入的為無生命或是有生命的人或是動物...<br>要跟後方的あります、います做搭配</li>
+              <div class="row">
+                <h5 class="col-md-10 col-10">A は B にいます / あります（A 在 B）</h5>
+                <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(15)">例句</a>
+            </div>
+              <p>A放東西、人...</p>
+              <p>B放場所、位置</p>
+              <li>Question:A （物／人）は＋ どこ＋に＋ありますか／いますか</li>
+              <li>Answer: A（物／人）は＋B＋に＋あります／います</li>
+              <br>
+              <p>有無疑問句 VS. 存在疑問句</p>
+              <p>場所＋に＋何／誰＋<mark>が</mark>＋ありますか／いますか</p>
+              <p>物／人＋<mark>は</mark>＋どこ+に＋ありますか／いますか</p>
+              <p>★</p>
+              <p>疑問詞+<mark>が</mark></p>
+              <p><mark>は</mark>＋疑問句</p>
+              <hr>
+              <div class="row">
+                <h5 class="col-md-10 col-10">～や～（など）</h5>
+                <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex(18)">例句</a>
+            </div>
+              <p>助詞，表列舉</p>
+              <p>N1 や N2 など</p>
+              <p>N1 や N2 や N3 など</p>
+    
+    
+    
+</div>
+    </div></div>
+    <div class="section course course3">
+      <div class="style2 col-md-12 py-5 text-black">
+        <h2>第三課</h2>
+        <br>
+        <h5>*時態</h5>
+        <h5>一、形容詞</h5>
+        <table align="center" border="1" class="table-bordered" bordercolor="black">
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th>常體</th>
+                    <th>敬體</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3">現在
+                        <br>未來</th>
+                    <td>肯定</td>
+                    <td>形容詞い</td>
+                    <td>形容詞いです</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">否定</td>
+                    <td rowspan="2">形容詞<del>い</del>くない</td>
+                    <td>形容詞<del>い</del>くないです</td>
+                </tr>
+                <tr> 
+                    <td>形容詞<del>い</del>くありません</td>
+                </tr>
+                <tr>
+                    <th rowspan="3">過去</th>
+                    <td>肯定</td>
+                    <td>形容詞<del>い</del>かった</td>
+                    <td>形容詞<del>い</del>かったです</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">否定</td>
+                    <td rowspan="2">形容詞<del>い</del>くなかった</td>
+                    <td>形容詞<del>い</del>くなかったです</td>
+                </tr>
+                <tr>
+                    <td>形容詞<del>い</del>くありませんでした</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5>二、形容動詞</h5>
+        <table align="center" border="1" class="table-bordered" bordercolor="black">
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th>常體</th>
+                    <th>敬體</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3">現在
+                        <br>未來</th>
+                    <td>肯定</td>
+                    <td>形容動詞だ</td>
+                    <td>形容動詞です</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">否定</td>
+                    <td rowspan="2">形容動詞ではない</td>
+                    <td>形容動詞ではないです</td>
+                </tr>
+                <tr> 
+                    <td>形容動詞ではありません</td>
+                </tr>
+                <tr>
+                    <th rowspan="3">過去</th>
+                    <td>肯定</td>
+                    <td>形容動詞だった</td>
+                    <td>形容動詞でした</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">否定</td>
+                    <td rowspan="2">形容動詞ではな<del>い</del>かった</td>
+                    <td>形容動詞ではな<del>い</del>かったです</td>
+                </tr>
+                <tr>
+                    <td>形容動詞ではありませんでした</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5>★中止形</h5>
+        <table align="center" border="1" class="table-bordered" bordercolor="black">
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th>A  連續敘述</th>
+                    <th>B  相對敘述</th>
+                    <th>C  因果敘述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="4">肯定</th>
+                    <th rowspan="2">い形</th>
+                    <td>①　形容詞<del>い</del>くて</td>
+                    <td>①　形容詞<del>い</del>くて</td>
+                    <td rowspan="2">①　形容詞<del>い</del>くて</td>
+                </tr>
+                <tr>
+                    <td>②　形容詞<del>い</del>く</td>
+                    <td>②　形容詞<del>い</del>く</td>
+                </tr>
+                <tr>
+                    <th>な形</th>
+                    <td>①　形容動詞で</td>
+                    <td>①　形容動詞で</td>
+                    <td>①　形容動詞で</td>
+                </tr>
+                <tr>
+                    <th>名詞</th>
+                    <td>①　名詞で</td>
+                    <td>①　名詞で</td>
+                    <td>①　名詞で</td>
+                </tr>
+                <tr>
+                    <th rowspan="6">否定</th>
+                    <th rowspan="2">い形</th>
+                    <td>①　形容詞<del>い</del>くなくて</td>
+                    <td>①　形容詞<del>い</del>くなくて</td>
+                    <td rowspan="2">①　形容詞<del>い</del>くなくて</td>
+                </tr>
+                <tr>
+                    <td>②　形容詞<del>い</del>くなく</td>
+                    <td>②　形容詞<del>い</del>くなく</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">な形</th>
+                    <td>①　形容動詞で<mark>(は)</mark>なくて</td>
+                    <td>①　形容動詞で<mark>(は)</mark>なくて</td>
+                    <td rowspan="2">①　形容動詞で<mark>(は)</mark>なくて</td>
+                </tr>
+                <tr>
+                    <td>②　形容動詞で<mark>(は)</mark>なく</td>
+                    <td>②　形容動詞で<mark>(は)</mark>なく</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">名詞</th>
+                    <td>①　名詞で<mark>(は)</mark>なくて</td>
+                    <td>①　名詞で<mark>(は)</mark>なくて</td>
+                    <td rowspan="2">①　名詞で<mark>(は)</mark>なくて</td>
+                </tr>
+                <tr>
+                    <td>②　名詞で<mark>(は)</mark>なく</td>
+                    <td>②　名詞で<mark>(は)</mark>なく</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5>三、名詞</h5>
+        <table align="center" border="1" class="table-bordered" bordercolor="black">
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th>常體</th>
+                    <th>敬體</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3">現在
+                        <br>未來</th>
+                    <th>肯定</th>
+                    <td>名詞だ</td>
+                    <td>名詞です</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">否定</th>
+                    <td rowspan="2">名詞ではない</td>
+                    <td>名詞ではないです</td>
+                </tr>
+                <tr>
+                    <td>名詞ではありません</td>
+                </tr>
+                <tr>
+                    <th rowspan="3">過去</th>
+                    <th>肯定</th>
+                    <td>名詞だった</td>
+                    <td>名詞でした</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">否定</th>
+                    <td rowspan="2">名詞ではな<del>い</del>かった</td>
+                    <td>名詞ではな<del>い</del>かったです</td>
+                </tr>
+                <tr>
+                    <td>名詞ではありませんでした</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5>四、動詞</h5>
+        <p>(あ)V1 未然形：否定形(ない形)</p>
+        <p>(い)V2 連用形(ます形)／過去形(た形)／中止形(て形)</p>
+        <p>(う)V3 辭書形：動詞原形</p>
+        <p>(う)V4 連體形：當形容詞用，後接名詞。う段 + 名詞單字</p>
+        <p>(え)V5 可能形／假定形(ば形)</p>
+        <p>(え)V6 命令形</p>
+        <p>(お)V7 意志形：在意志的表現上會變成無視聽者的自言自語。還有，對熟識的聽者使用的話，
+            <br>則可表示勸誘，或者聲明自己的行為。意志形加上「とする」「とします」的話，
+            <br>則表示出某行為嘗試過但是未達成，或者表示出事情在實現之前的狀態。</p>
+            <table align="center" border="1" class="table-bordered" bordercolor="black">
+                <thead>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th>常體</th>
+                        <th>敬體</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2">現在
+                            <br>未來</th>
+                        <th>肯定</th>
+                        <td>V3</td>
+                        <td>V2 + ます</td>
+                    </tr>
+                    <tr>
+                        <th>否定</th>
+                        <td>V1 + ない</td>
+                        <td>V2 + ません</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">過去</th>
+                        <th>肯定</th>
+                        <td>V2 + た</td>
+                        <td>V2 + ました</td>
+                    </tr>
+                    <tr>
+                        <th>否定</th>
+                        <td>V1 + なかった</td>
+                        <td>V2 + ませんでした</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h5>*動詞分類</h5>
+            <table align="center" border="1" class="table-bordered" bordercolor="black">
+                <thead>
+                    <tr>
+                        <th colspan="2">種類</th>
+                        <th>區別方法（看動詞的語尾和語尾前面一個字的發音）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="3">一類</th>
+                        <th rowspan="3">五段動詞</th>
+                        <td>①終止形不是 る 音為結尾</td>
+                    </tr>
+                    <tr>
+                        <td>②終止形不是 る 音為結尾、但 る 前一個字的發音在<br> ア 段音、ウ 段音、オ 段音</td>
+                    </tr>
+                    <tr>
+                        <td>③ 有些字外形看起來像是上下一段動詞，但卻是五段動詞</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">二類</th>
+                        <th>上一段動詞</th>
+                        <td>終止形必為 る 音為結尾、但 る 前一個字的發音在 イ 段音</td>
+                    </tr>
+                    <tr>
+                        <th>下一段動詞</th>
+                        <td>終止形必為 る 音為結尾、但 る 前一個字的發音在 エ 段音</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">三類</th>
+                        <th>カ行變格動詞</th>
+                        <td>簡稱"カ變動詞"，語尾變化並不規則。
+                            <br>在日語中只有　くる　一個動詞</td>
+                    </tr>
+                    <tr>
+                        <th>サ行變格動詞</th>
+                        <td>簡稱"サ變動詞"，語尾變化並不規則。
+                            <br>在日語中只有　する　一個動詞</td>
+                    </tr>
+                </tbody>
+                <br>
+            </table>
+            <br>
+            <h5>音便-->為了發音方便</h5>
+            <p>音便只會發生在<mark>五段動詞</mark></p>
+            <p>*當五段動詞V2 下面接助動詞的 「たら」「た」、<br>或是接助詞的 「たり」「て」「ては」「ても」...時</p>
+            <p><mark>(た形)(て形)</mark></p>
+            <table align="center" border="1" class="table-bordered" bordercolor="black">
+                <thead>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="2">カ行</th>
+                        <th>バ行</th>
+                        <th>ナ行</th>
+                        <th>マ行</th>
+                        <th>タ行</th>
+                        <th>ワ行</th>
+                        <th>ラ行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colspan="2">動詞結尾</th>
+                        <td>く</td>
+                        <td>ぐ</td>
+                        <td>ぶ</td>
+                        <td>ぬ</td>
+                        <td>む</td>
+                        <td>つ</td>
+                        <td>う</td>
+                        <td>る</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">い音便</th>
+                        <td>書く</td>
+                        <td>泳ぐ</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">ん音便</th>
+                        <td></td>
+                        <td></td>
+                        <td>遊ぶ</td>
+                        <td>死ぬ</td>
+                        <td>飲む</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">つ音便</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>立つ</td>
+                        <td>笑う</td>
+                        <td>ある</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <p>【い音便】　書く　→　書「き」た　→　書「い」た
+    
+                　　 <br>泳ぐ　→　泳「ぎ」た　→　泳「い」だ</p>
+            <p>【鼻音便】　遊ぶ　→　遊「び」た　→　遊「ん」だ
+    
+                　　　<br>死ぬ　→　死「に」た　→　死「ん」だ
+                
+                　　　<br>飲む　→　飲「み」た　→　飲「ん」だ</p>
+            <p>【促音便】　立つ　→　立「ち」た　→　立「っ」た
+    
+                　　　<br>笑う　→　笑「い」た　→　笑「っ」た
+                
+                　　　<br>ある　→　あ「り」た　→　あ「っ」た</p>
+            <p>「行く」是五段動詞裡面唯一音便的例外</p>
+            <p>行く　→　行きた　→　行いた（X）　行く　→　行った（〇）</p>
+    
+</div>
+    </div>
+    <div class="section course course4">
+      <div class="style2 col-md-12 py-5 text-black">
+        <h2>第四課</h2>
+        <hr>
+        <div class="row">
+            <h5 class="col-md-10 col-10">A に B があります。(A有B)</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex()">例句</a>
+        </div>
+        <p>A 放場所、位置(N1 の N2)</p>
+        <p>B 放東西、物品</p>
+        <h5>A に B がいます。 (A有B)</h5>
+        <p>A 放場所、位置(N1 の N2)</p>
+        <p>B 放人、動物</p>
+        <h5>A は B にあります。(A在B)</h5>
+        <p>A 放東西、物品</p>
+        <p>B 放場所、位置(N1 の N2)</p>
+        <h5>A は B にいます。(A在B)</h5>
+        <p>A 放人、動物</p>
+        <p>B 放場所、位置(N1 の N2)</p>
+        <hr>
+        <div class="row">
+            <h5 class="col-md-10 col-10">S + 時間  に + 動詞</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex()">例句</a>
+        </div>
+        <br>
+        <h5>ごろ(左右)</h5>
+        <p>時間點 + ごろ</p>
+        <h5>ぐらい(左右)</h5>
+        <p>時間長度 + ぐらい</p>
+        <p>數量詞 + ぐらい</p>
+        <P>疑問數量詞 + ぐらい</P>
+        <hr>
+        <div class="row">
+            <h5 class="col-md-10 col-10">～から～まで (從~到~)</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex()">例句</a>
+        </div>
+        <p>~需放同一性質的東西</p>
+        <p>時間.空間皆可使用</p>
+        <hr>
+        <div class="row">
+            <h5 class="col-md-10 col-10">～の後(あど)で、～の前(まえ)に</h5>
+            <a class="col-md-2 col-2 btn btn-outline-secondary" onclick="getSearchIndex()">例句</a>
+        </div>
+        <p>表示兩個動作的前後關係</p>
+        <p>~要放有動作行為的名詞</p>
+        <hr>
+        <h5>を、に</h5>
+        <p>を：離間點、出發點</p>
+        <p>に：抵達點、歸著點</p>
+        <br>
+        <h5>か、が</h5>
+        <p>か：表示還未確定一個空間內是否有人，回答時需先回答<mark>はい、いいえ</mark></p>
+        <p>が：表示確定一個空間內有人，回答時只須回答<mark>有誰、沒人</mark></p>
+        <br>
+        <h5>～時(じ)～分(ぷん)</h5>
+        <p>*遇到，促音 or 鼻音+ ぷん</p>
+        <p><mark>፠　一分（いっぷん）、三分（さんぷん）、四分（よんぷん）、六分（ろっぷん）、
+            <br>八分（はっぷん）、十分（じっぷん）、何分（なんぷん）</mark></p>
+    
+        <br>
+        <h5>頻率副詞</h5>
+        <p>いつも(總是)</p>
+        <p>よく(經常)</p>
+        <p>ときどき(有時)</p>
+        <p>たまに(偶爾)</p>
+        <p>あまり～ません(不常)</p>
+        <p>全然～ません(總不)</p>
+        <br>
+        <h5>程度副詞</h5>
+        <p>とても(很)</p>
+        <p>すごく(非常)</p>
+        <p>まあまあ(還好)</p>
+        <p>ちょっと(有點)</p>
+        <p>すこし(有點)</p>
+        <p>あまり+[否定詞](不是很好)</p>
+        <p>全然+[否定詞](完全不)</p>
+</div>
+    </div>
+    <div class="section course course5">
+      <div class="style2 col-md-12 py-5 text-black">
+        <h2>第五課</h2>
+        <br>
+        <h5>小時</h5>
+        <p>一時（いちじ）</p>
+        <p>二時（にじ）</p>
+        <p>三時（さんじ）</p>
+        <p><mark>四時（よじ）</mark></p>
+        <p>五時（ごじ）</p>
+        <p>六時（ろくじ）</p>
+        <p>七時（しちじ／ななじ）</p>
+        <p>八時（はちじ）</p>
+        <p><mark>九時（くじ）</mark></p>
+        <p>十時（じゅうじ）</p>
+        <p>十一時（じゅういちじ）</p>
+        <p>十二時（じゅうにじ）</p>
+        <p>十三時（じゅうさんじ）</p>
+        <p><mark>十四時（じゅうよじ）</mark></p>
+        <p>十五時（じゅうごじ）</p>
+        <p>十六時（じゅうろくじ）</p>
+        <p>十七時（じゅうしちじ／じゅうななじ）</p>
+        <p>十八時（じゅうはちじ）</p>
+        <p><mark>十九時（じゅうくじ）</mark></p>
+        <p>二十時（にじゅうじ）</p>
+        <p>二十一時（にじゅういちじ）</p>
+        <p>二十二時（にじゅうにじ）</p>
+        <p>二十三時（にじゅうさんじ）</p>
+        <p>零時（れいじ）</p>
+        <p>何時（なんじ）</p>
+        <br>
+    
+        <h5>日（幾號）</h5>
+        <p>一日（ついたち）</p>
+        <p>二日（ふつか）</p>
+        <p>三日（みっか）</p>
+        <p>四日（よっか）</p>
+        <p>五日（いつか）</p>
+        <p>六日（むいか）</p>
+        <p>七日（なのか）</p>
+        <p>八日（ようか）</p>
+        <p>九日（ここのか）</p>
+        <p>十日（とおか）</p>
+        <p><mark>十四日（じゅうよっか）</mark></p>
+        <p><mark>十九日（じゅうくにち）</mark></p>
+        <p><mark>二十日（はつか）</mark></p>
+        <p><mark>二十四日（にじゅうよっか）</mark></p>
+        <p><mark>二十九日（にじゅうくにち）</mark></p>
+        <p>何日（なんにち）</p>
+        <br>
+    
+        <h5>日（幾天  通用）</h5>
+        <p>一日（いちにち）／一日中（いちにちじゅう）</p>
+        <p>二日（ふつか）／二日間（ふつかかん）</p>
+        <p>三日（みっか）／三日間（みっかかん）</p>
+        <p>四日（よっか）／四日間（よっかかん）</p>
+        <p>五日（いつか）／五日間（いつかかん）</p>
+        <p>六日（むいか）／六日間（むいかかん）</p>
+        <p>七日（なのか）／七日間（なのかかん）</p>
+        <p>八日（ようか）／八日間（ようかかん）</p>
+        <p>九日（ここのか）／九日間（ここのかかん）</p>
+        <p>十日（とおか）／十日間（とおかかん）</p>
+        <br>
+    
+        <h5>星期（星期一開始排序）</h5>
+        <p>月曜日（げつようび）</p>
+        <p>火曜日（かようび）</p>
+        <p>水曜日（すいようび）</p>
+        <p>木曜日（もくようび）</p>
+        <p>金曜日（きんようび）</p>
+        <p>土曜日（どようび）</p>
+        <p>日曜日（にちようび）</p>
+        <p>何曜日（なんようび）</p>
+        <br>
+    
+        <h5>週間（需花費幾個禮拜）</h5>
+        <p>一週間（いっしゅうかん）</p>
+        <p>二週間（にしゅうかん）</p>
+        <p>三週間（さんしゅうかん）</p>
+        <p>四週間（よんしゅうかん）</p>
+        <p>五週間（ごしゅうかん）</p>
+        <p>六週間（ろくしゅうかん）</p>
+        <p>七週間（ななしゅうかん）</p>
+        <p>八週間（はっしゅうかん）</p>
+        <p>九週間（きゅうしゅうかん）</p>
+        <p>十週間（じっしゅうかん）</p>
+        <br>
+    
+        <h5>月</h5>
+        <p>一月（いちがつ）</p>
+        <p>二月（にがつ）</p>
+        <p>三月（さんがつ）</p>
+        <p>四月（しがつ）</p>
+        <p>五月（ごがつ）</p>
+        <p>六月（ろくがつ）</p>
+        <p>七月（しちがつ）</p>
+        <p>八月（はちがつ）</p>
+        <p>九月（くがつ）</p>
+        <p>十月（じゅうがつ）</p>
+        <p>十一月（じゅういちがつ）</p>
+        <p>十二月（じゅうにがつ）</p>
+        <p>何月（なんがつ）</p>
+        <br>
+    
+        <h5>月(不加間)</h5>
+        <p><mark>一か月（いっかげつ）</mark></p>
+        <p>二か月（にかげつ）</p>
+        <p>三か月（さんかげつ）</p>
+        <p>四か月（よんかげつ）</p>
+        <p>五か月（ごかげつ）</p>
+        <p><mark>六か月（ろっかげつ）</mark></p>
+        <p>七か月（ななかげつ）</p>
+        <p>八か月（はちかげつ）</p>
+        <p>九か月（きゅうかげつ）</p>
+        <p><mark>十か月（じっかげつ）</mark></p>
+        <p><mark>十一か月（じゅういっかげつ）</mark></p>
+        <p>十二か月（じゅうにかげつ）</p>
+        <p>何か月（なんかげつ）</p>
+        <br>
+    
+        <h5>月(加間)</h5>
+        <p><mark>一か月間（いっかげつかん）</mark></p>
+        <p>二か月間（にかげつかん）</p>
+        <p>三か月間（さんかげつかん）</p>
+        <p>四か月間（よんかげつかん）</p>
+        <p>五か月間（ごかげつかん）</p>
+        <p><mark>六か月間（ろっかげつかん）</mark></p>
+        <p>七か月間（ななかげつかん）</p>
+        <p>八か月間（はちかげつかん／はっかげつかん）</p>
+        <p>九か月間（きゅうかげつかん）</p>
+        <p><mark>十か月間（じっかげつかん／じゅっかげつかん）</mark></p>
+        <p><mark>十一か月間（じゅういっかげつかん）</mark></p>
+        <p>十二か月間（じゅうにかげつかん）</p>
+        <p>何か月間（なんかげつかん）</p>
+        <br>
+    
+        <h5>年</h5>
+        <p>一年（いちねん）</p>
+        <p>二年（にねん）</p>
+        <p>三年（さんねん）</p>
+        <p><mark>四年（よねん）</mark></p>
+        <p>五年（ごねん）</p>
+        <p>六年（ろくねん）</p>
+        <p>七年（しちねん）</p>
+        <p>八年（はちねん）</p>
+        <p><mark>九年（くねん）</mark></p>
+        <p>十年（じゅうねん）</p>
+        <br>
+    
+        <h5>★百讀音</h5>
+        <p>百（ひゃく）</p>
+        <p>二百（にひゃく）</p>
+        <p><mark>三百（さんびゃく）</mark></p>
+        <p>四百（よんひゃく）</p>
+        <p>五百（ごひゃく）</p>
+        <p><mark>六百（ろっぴゃく）</mark></p>
+        <p>七百（ななひゃく）</p>
+        <p><mark>八百（はっぴゃく）</mark></p>
+        <p>九百（きゅうひゃく）</p>
+        <br>
+    
+        <h5>★千讀音</h5>
+        <p>千（せん）</p>
+        <p>二千（にせん）</p>
+        <p><mark>三千（さんぜん）</mark></p>
+        <p>四千（よんせん）</p>
+        <p>五千（ごせん）</p>
+        <p>六千（ろくせん）</p>
+        <p>七千（ななせん）</p>
+        <p><mark>八千（はっせん）</mark></p>
+        <p>九千（きゅうせん）</p>
+        <br>
+</div>
+    </div>
+    <div class="section course course6">
+      <div class="style2 py-5 text-black">
+        <h2>第六課</h2>
+        <br>
+        <p>A：（給与者）　B：（接受者）　C：（旁観者）</p>
+        <p>あげる　(あげます）(給)</p>
+        <p>(人) は (人) に N(名詞) をあげる</p>
+        <p>もらう（もらいます）(得到)</p>
+        <p>(人) は (人) に N(名詞) をもらう</p>
+        <p>くれる（くれます）(某人給我 或我的家人)</p>
+        <p>(人) は (わたし或是 わたしの家人) に N(名詞) をくれる</p>
+        <br>
+        <table align="center" border="1" class="table-bordered" bordercolor="black">
+            <thead>
+                <tr>
+                    <th>可否</th>
+                    <th>説話者</th>
+                    <th>動作者</th>
+                    <th>対方</th>
+                    <th>対象</th>
+                    <th>動作者的動作</th>
+                    <th>中訳</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>OK</th>
+                    <td>A説：</td>
+                    <td>私は</td>
+                    <td>Bに</td>
+                    <td>本を</td>
+                    <td>あげます。</td>
+                    <td>我送給B一本書</td>
+                </tr>
+                <tr>
+                    <th>X</th>
+                    <td>B説：</td>
+                    <td>Aは</td>
+                    <td>私に</td>
+                    <td>本を</td>
+                    <td>あげます</td>
+                    <td>A送給我一本書</td>
+                </tr>
+                <tr>
+                    <th>OK</th>
+                    <td>C説：</td>
+                    <td>Aは</td>
+                    <td>Bに</td>
+                    <td>本を</td>
+                    <td>あげます。</td>
+                    <td>A送給B一本書</td>
+                </tr>
+                <tr>
+                    <th>X</th>
+                    <td>A説：</td>
+                    <td>Bは</td>
+                    <td>私に</td>
+                    <td>本を</td>
+                    <td>もらいます。</td>
+                    <td>B從我這裡得到一本書</td>
+                </tr>
+                <tr>
+                    <th>OK</th>
+                    <td>B説：</td>
+                    <td>私は</td>
+                    <td>Aに<mark>（から）</mark></td>
+                    <td>本を</td>
+                    <td>もらいます。</td>
+                    <td>我從A那裡得到一本書</td>
+                </tr>
+                <tr>
+                    <th>OK</th>
+                    <td>C説：</td>
+                    <td>Bは</td>
+                    <td>Aに<mark>（から）</mark></td>
+                    <td>本を</td>
+                    <td>もらいます。</td>
+                    <td>B從A那裡得到一本書</td>
+                </tr>
+                <tr>
+                    <th>X</th>
+                    <td>A説：</td>
+                    <td>私は</td>
+                    <td>Bに</td>
+                    <td>本を</td>
+                    <td>くれます。</td>
+                    <td>我送給B一本書</td>
+                </tr>
+                <tr>
+                    <th>OK</th>
+                    <td>B説：</td>
+                    <td>Aは</td>
+                    <td>私に</td>
+                    <td>本を</td>
+                    <td>くれます。</td>
+                    <td>A送我一本書</td>
+                </tr>
+                <tr>
+                    <th>*註1</th>
+                    <td>C説：</td>
+                    <td>Aは</td>
+                    <td>Bに</td>
+                    <td>本を</td>
+                    <td>くれます。</td>
+                    <td>A送給B一本書</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <p>「くれる」原則上只使用在別人給自己的情況，但如果<br>AはBに本をくれます。接受者B是我方的人，這時就可以使用くれる。</p>
+        <p>（１）学校の友達が私の家族にお土産をくれました。</p>
+        <p>註１：原則上第三者描述給予句子的時候只能使用「あげる」和「くれる」<br>但若是出現了像下面（２）這樣的句子時，就可判斷出マリアさん是和自己比較親近的人。</p>
+        <p>（２）ジョンさんがマリアさんに花をくれました。</p>
+        <p>先輩、同僚、後輩　の使い方</p>
+        <p>「あげる」系列</p>
+        <p>先輩：差（さ）し上げる　　同僚：あげる　　後輩や動物や植物：やる</p>
+        <p>「もらう」系列</p>
+        <p>先輩：いただく　同僚と後輩：もらう</p>
+        <p>「くれる」系列</p>
+        <p>先輩：下（くだ）さる　　同僚と後輩：くれる</p>
+</div>
+    </div>
+    <div class="section course course7">
+      <div class="style2 col-md-12 py-5 text-black">
+        <h2>第七課</h2>
+        <br>
+        <h5>助詞補充</h5>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="8">を</th>
+                <th rowspan="3">受詞</th>
+                <td>（１）テレビを見る</td>
+            </tr>
+            <tr>
+                <td>（２）ジュースを飲む。</td>
+            </tr>
+            <tr>
+                <td>（３）今新聞を読んでいる。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">離開點</th>
+                <td>（１）電車を降りる。</td>
+            </tr>
+            <tr>
+                <td>（２）家を出る。</td>
+            </tr>
+            <tr>
+                <th rowspan="3">通過點</th>
+                <td>（１）鳥が空を飛ぶ。</td>
+            </tr>
+            <tr>
+                <td>（２）橋を渡る。</td>
+            </tr>
+            <tr>
+                <td>（３）公園を散歩する。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="10">に</th>
+                <th rowspan="2">存在</th>
+                <td>（１）机の上に本やノートなどがあります。</td>
+            </tr>
+            <tr>
+                <td>（２）玄関の前に自転車があります。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">時間</th>
+                <td>（１）授業は八時に始まります。</td>
+            </tr>
+            <tr>
+                <td>（２）弟は九月七日に生まれました。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">歸著點</th>
+                <td>（１）家に着きました。</td>
+            </tr>
+            <tr>
+                <td>（２）電車に乗ります。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">對象</th>
+                <td>（１）母にバラの花を送りました。</td>
+            </tr>
+            <tr>
+                <td>（２）彼女に電話をかけます。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">目的</th>
+                <td>（１）電子工学の勉強に来ました。</td>
+            </tr>
+            <tr>
+                <td>（２）郵便局へ荷物を送りに行きました。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="9">で</th>
+                <th rowspan="2">場所、動作</th>
+                <td>（１）田中さんはデパートで靴を買った。</td>
+            </tr>
+            <tr>
+                <td>（２）体育館でスポーツ大会があります。</td>
+            </tr>
+            <tr>
+                <th rowspan="3">工具</th>
+                <td>（１）バスで学校へ行きます。</td>
+            </tr>
+            <tr>
+                <td>（２）日本語で手紙を書きました。</td>
+            </tr>
+            <tr>
+                <td>（３）箸で食事をします。</td>
+            </tr>
+            <tr>
+                <th>範圍</th>
+                <td>（１）スポーツの中で何が一番好きですか。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">原因、理由</th>
+                <td>（１）病気で学校を休みました。</td>
+            </tr>
+            <tr>
+                <td>（２）雨でテニスの練習ができません。</td>
+            </tr>
+            <tr>
+                <th>材料</th>
+                <td>（１）木で机を作ります。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="4">と</th>
+                <th>並列、和</th>
+                <td>（１）雑誌とペンを買いました。</td>
+            </tr>
+            <tr>
+                <th>引用</th>
+                <td>（１）明日は雨が降ると思います。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">一起對象</th>
+                <td>（１）彼氏と映画を見ました。</td>
+            </tr>
+            <tr>
+                <td>（２）母と一緒に買物に行きます。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="2">へ</th>
+                <th rowspan="2">移動、方向</th>
+                <td>（１）MRTで家へ帰りました。</td>
+            </tr>
+            <tr>
+                <td>（２）来年ドイツへ行きます。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="2">は</th>
+                <th>主題</th>
+                <td>（１）私は東京大学の学生です。</td>
+            </tr>
+            <tr>
+                <th>對比</th>
+                <td>（１）アリフさんは一年生で、ラヒムさんは二年生です。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="6">が</th>
+                <th rowspan="3">主語</th>
+                <td>（１）池に魚がいます。【存在的主語】</td>
+            </tr>
+            <tr>
+                <td>（２）雨が降っています。【狀態的主語】</td>
+            </tr>
+            <tr>
+                <td>（３）アンナさんは声がきれいです。【小主語】</td>
+            </tr>
+            <tr>
+                <th rowspan="3">能力</th>
+                <td>（１）苺が好きです。</td>
+            </tr>
+            <tr>
+                <td>（２）目が悪いです。</td>
+            </tr>
+            <tr>
+                <td>（３）日本語が下手です。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="4">も</th>
+                <th rowspan="2">事物並列、也</th>
+                <td>（１）パンを食べました、ジュースものみました。</td>
+            </tr>
+            <tr>
+                <td>（２）家にも犬がいます。</td>
+            </tr>
+            <tr>
+                <th rowspan="2">全面否定</th>
+                <td>（１）教室に誰もいません。</td>
+            </tr>
+            <tr>
+                <td>（２）何も買いませんでした。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="3">の</th>
+                <th>所屬</th>
+                <td>（１）これは田中さんの辞書です。</td>
+            </tr>
+            <tr>
+                <th>替代</th>
+                <td>（１）この鞄はマリアさんのではありません。陳さんのです。</td>
+            </tr>
+            <tr>
+                <th>同位格</th>
+                <td>（１）友達の森田さんは工場で働いています。</td>
+            </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+                <tr>
+                    <th>や・など</th>
+                    <th>列舉、等等</th>
+                    <td>（１）机の上に本やノートなどがあります。</td>
+                </tr>
+        </table>
+        <br>
+        <table  border="1" class="table-bordered" bordercolor="black">
+            <tr>
+                <th rowspan="2">から～まで</th>
+                <th rowspan="2">時間、空間</th>
+                <td>（１）家から学校まで三十分ぐらいかかります。</td>
+            </tr>
+            <tr>
+                <td>（２）毎晩八時から十一時まで勉強をします。</td>
+            </tr>
+        </table>
+</div>
+    </div>
+
+    <div class="ChatBox">
+        <iframe class="chat-iframe" src="/chatbot"></iframe>
+        <div class="chat-container hide">
+        <div class="chat-floating-button"><i class="fa-regular fa-comments"></i></div>
+        <div class="back-top" title="回頂部"><i class="fa fa-arrow-up"></i></div>
+      </div>
+        </div>
+    
+</body>
+<script>
+    
+    function showCourse(courseNumber) {
+    const courseCards = document.querySelectorAll('.section');
+    courseCards.forEach(card => {
+        card.style.display = 'none';
+    });
+    const selectedCourse = document.querySelector(`.course${courseNumber}`);
+    if (selectedCourse) {
+        selectedCourse.style.display = 'grid';
+        window.scrollTo({
+                  top: selectedCourse.offsetTop-400,
+                  behavior: 'smooth'});}};
+    function getSearchIndex(index){
+        $.ajax({
+            type:"POST",
+            url:"/getGrammer",
+            data:{search_index:index},
+            success:function(response){}
+        })
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script type = "text/javascript" src = "{{ url_for('static', filename = 'common.js') }}" ></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+   
+</html>
